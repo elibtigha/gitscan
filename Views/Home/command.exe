@@ -1,0 +1,4 @@
+﻿Process notePad = new Process();    
+notePad.StartInfo.FileName   = "notepad.exe";
+notePad.StartInfo.Arguments = "ProcessStart.cs"; // if you need some
+notePad.Start();

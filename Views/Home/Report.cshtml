@@ -1,0 +1,321 @@
+﻿@model OctokitDemo.Models.ReportViewModel
+
+@{
+    ViewBag.Title = "GitScan";
+}
+
+<!DOCTYPE html>
+<head>
+    <!-- <script src="azure-storage.blob.js"></script> -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GitScan - Scan Completed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style>
+    .navbar {
+        margin-bottom: 0;
+        background-color: #22325a;
+        z-index: 9999;
+        border: 0;
+        letter-spacing: 3px;
+        border-radius: 0;
+    }
+
+        .navbar li a {
+            color: #fff !important;
+            font-family: MS UI Gothic;
+            font-size: 24px !important;
+            padding-right: 50px;
+            padding-left: 50px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+
+        .navbar .navbar-brand {
+            color: #fff !important;
+            font-family: 'Trebuchet MS';
+            font-size: 45px !important;
+            padding-right: 50px;
+            padding-left: 50px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+
+    .navbar-nav li a:hover, .navbar-nav li.active a {
+        color: #22325b !important;
+        background-color: #fff !important;
+        font-family: MS UI Gothic;
+    }
+
+    .navbar-default .navbar-toggle {
+        border-color: transparent;
+        color: #fff !important;
+        font-family: MS UI Gothic;
+    }
+
+    .slideanim {
+        visibility: hidden;
+    }
+
+    .slide {
+        animation-name: slide;
+        -webkit-animation-name: slide;
+        animation-duration: 1s;
+        -webkit-animation-duration: 1s;
+        visibility: visible;
+    }
+
+    body {
+        padding-top: 120px;
+    }
+
+    .btn-success {
+        padding: 10px 40px;
+        font-size: 34px;
+        border-radius: 10px;
+        font-family: MS UI Gothic;
+        background-color: #6CC644;
+        border-color: #6CC644;
+        padding-top: 0px;
+    }
+
+    .btn-lg {
+        font-family: MS UI Gothic;
+        background-color: #FFB900;
+        border-color: #FFB900;
+    }
+
+        .btn-lg:hover, .btn-lg:focus, .btn-lg:active {
+            color: #FFB900;
+            background-color: #fff;
+            border-color: #FFB900;
+        }
+
+    img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .glyphicon {
+        font-size: 80px;
+        color: #7FBA00;
+        padding-right: 200px;
+        padding-left: 100px;
+    }
+
+    span {
+        padding-right: 0px;
+        padding-left: 187px;
+        color: #7FBA00;
+        font-size: 24px;
+        font-family: MS UI Gothic;
+    }
+
+    i {
+        width: 150px;
+        height: 120px;
+    }
+
+    h2 {
+        font-family: Trebuchet MS;
+        font-size: 60px;
+    }
+
+    h3 {
+        font-family: MS UI Gothic;
+        font-size: 24px;
+    }
+
+    h4 {
+        font-family: Trebuchet MS;
+        font-size: 40px;
+        color: #00A4EF;
+    }
+
+    .demo {
+        padding: 40px 0;
+    }
+
+    .heading-title {
+        margin-bottom: 100px;
+    }
+
+    .serviceBox {
+        padding: 0px 30px 30px 30px;
+        background: #fff;
+        color: #333;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+        .serviceBox:hover {
+            background: #22325b;
+            color: #fff;
+        }
+
+        .serviceBox:after {
+            content: "";
+            display: block;
+            border-top: 500px solid #fff;
+            border-left: 500px solid transparent;
+            margin-top: -55%;
+            margin-left: 100%;
+            opacity: 0;
+            position: absolute;
+            transform: scale(2);
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        .serviceBox:hover:after {
+            margin-left: 0;
+            opacity: 0.1;
+        }
+
+        .serviceBox:hover .service-icon {
+            color: #fff;
+        }
+
+        .serviceBox .description {
+            font-size: 15px;
+            font-family: 'Trebuchet MS';
+            color: #a3a3a3;
+            line-height: 25px;
+            margin: 0;
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        .serviceBox:hover .description {
+            color: #fff;
+        }
+
+    #page-container {
+        position: relative;
+        min-height: 100vh;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr {
+        background-color: #eeeeee
+    }
+
+    th {
+        background-color: #22325a;
+        color: #eeeeee;
+    }
+
+    .noHover {
+        pointer-events: none;
+    }
+
+    td:hover {
+        cursor: pointer;
+    }
+
+    .table-row {
+        cursor: pointer;
+    }
+</style>
+<script>
+    $(document).ready(function ($) {
+        $(".table-row").click(function () {
+            window.document.location = $(this).data("href");
+        });
+    });
+</script>
+
+<div class="container-fluid">
+    <nav style="margin-bottom: 0; background-color: #22325a; z-index: 9999; border: 0; letter-spacing: 3px; border-radius: 0;" class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a style="color: #fff !important; font-family: 'Trebuchet MS'; font-size: 45px !important; padding-right: 50px; padding-left: 50px;padding-top: 25px;padding-bottom: 25px;" class="navbar-brand" href="/Home/Index">GitScan</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a style="color: #fff ;font-family: MS UI Gothic;font-size: 24px !important;padding-right: 50px;padding-left: 50px;padding-top: 25px;padding-bottom: 25px;" href="/Home/Index#about">About</a></li>
+                <li><a style="color: #fff ;font-family: MS UI Gothic;font-size: 24px !important;padding-right: 50px;padding-left: 50px;padding-top: 25px;padding-bottom: 25px;" href="/Home/Index#doc">Doc</a></li>
+                <li><a style="color: #fff ;font-family: MS UI Gothic;font-size: 24px !important;padding-right: 50px;padding-left: 50px;padding-top: 25px;padding-bottom: 25px;" href="/Home/Index#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<br>
+<br>
+<br>
+
+@if (Model.Result.WorkStatus == MS.Ess.Scan.DataContracts.Private.WorkStatus.Clean)
+{
+    <div class="row">
+        <div class="col-md-8 col-sm-6">
+            <div class="serviceBox noHover">
+                <div class="service-icon">
+                    <i class="fa fa-rocket"></i>
+                </div>
+                <h2 class="title">Summary</h2>
+                <h3>GitScan didn't detect infected files.</h3>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-8 col-sm-6">
+            <div class="serviceBox noHover">
+                <div class="service-icon">
+                    <i class="fa fa-rocket"></i>
+                </div>
+                <h2 class="title">Summary</h2>
+                <h3>GitScan detected @Model.Result.ConfirmedMalwares.Count() infected files. See details below: </h3>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-8 col-sm-6">
+            <table class='table table-bordered table-condensed table-striped table-hover'>
+                <tr><th>File name</th><th>Malware Detected</th></tr>
+                @foreach (var entry in Model.Result.ConfirmedMalwares)
+                {
+                    <tr class="table-row"> <td>@entry.FileName</td><td>@entry.MalwareInfo</td></tr>
+                }
+            </table>
+        </div>
+        <br>
+        <div class="col-md-4 col-sm-6">
+            <div class="serviceBox">
+                <div class="service-icon">
+                    <i class="fa fa-rocket"></i>
+                </div>
+                <b><h3 class="title">Next Steps</h3></b>
+                <p class="description">
+                    GitScan provides high detailed feedback to improve the security of your files. Our reports display the line to line vulnerability of individual files. We provide service to extend
+                    customer support in GitScan to learn more about how they can detect malware in their files.
+                </p>
+            </div>
+        </div>
+    </div>
+
+}
+<br>
+    </body>
+</html>

@@ -1,0 +1,338 @@
+﻿@model OctokitDemo.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "GitScan";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- <script src="azure-storage.blob.js"></script> -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GitScan - Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+  .navbar {
+    margin-bottom: 0;
+    background-color: #22325a;
+    z-index: 9999;
+    border: 0;
+    letter-spacing: 3px;
+    border-radius: 0;
+  }
+  .navbar li a {
+      color: #fff !important;
+      font-family: MS UI Gothic;
+      font-size: 24px !important;
+      padding-right: 50px;
+      padding-left: 50px;
+      padding-top: 25px;
+      padding-bottom: 25px;
+  }
+  .navbar .navbar-brand {
+      color: #fff !important;
+      font-family: 'Trebuchet MS';
+      font-size: 45px !important;
+      padding-right: 50px;
+      padding-left: 50px;
+      padding-top: 25px;
+      padding-bottom: 25px;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #22325b !important;
+      background-color: #fff !important;
+      font-family: MS UI Gothic;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+      font-family: MS UI Gothic;
+  }
+  .slideanim {visibility:hidden;}
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  body {
+  padding-top: 120px;
+  }
+  .btn-success {
+  padding: 10px 40px;
+  font-size: 34px;
+  border-radius: 10px;
+  font-family: MS UI Gothic;
+  background-color: #6CC644;
+  border-color: #6CC644;
+  padding-top: 0px;
+  }
+  .btn-lg {
+    font-family: MS UI Gothic;
+    background-color: #FFB900;
+    border-color: #FFB900;
+  }
+  .btn-lg:hover, .btn-lg:focus, .btn-lg:active{
+  color: #FFB900;
+  background-color: #fff;
+  border-color: #FFB900;
+  }
+  img {
+    width: 150px;
+    height: 150px;
+  }
+  .glyphicon {
+  font-size: 80px;
+  color: #7FBA00;
+  padding-right: 200px;
+  padding-left: 100px;
+  }
+  span {
+  padding-right: 0px;
+  padding-left: 187px;
+  color: #7FBA00;
+  font-size: 24px;
+  font-family: MS UI Gothic;
+  }
+  i {
+  width: 150px;
+  height:120px;
+  }
+  h2 {
+  font-family: Trebuchet MS;
+  font-size: 60px;
+  }
+  h3 {
+  font-family: MS UI Gothic;
+  font-size: 24px;
+  }
+  h4 {
+  font-family: Trebuchet MS;
+  font-size: 40px;
+  color: #00A4EF;
+  }
+  .demo
+  {
+  padding: 40px 0;
+  }
+  .heading-title
+  {
+  margin-bottom: 100px;
+  }
+  .serviceBox{
+  padding: 0px 30px 30px 30px;
+  background: #fff;
+  color: #333;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease-in-out 0s;
+  }
+  .serviceBox:hover{
+  background: #22325b;
+  color: #fff;
+  }
+  .serviceBox:after{
+  content: "";
+  display: block;
+  border-top: 500px solid #fff;
+  border-left: 500px solid transparent;
+  margin-top: -55%;
+  margin-left: 100%;
+  opacity: 0;
+  position: absolute;
+  transform: scale(2);
+  transition: all 0.3s ease-in-out 0s;
+  }
+  .serviceBox:hover:after{
+  margin-left: 0;
+  opacity: 0.1;
+  }
+  .serviceBox:hover .service-icon{
+  color: #fff;
+  }
+  .serviceBox .description{
+  font-size: 15px;
+  font-family: 'Trebuchet MS';
+  color: #a3a3a3;
+  line-height: 25px;
+  margin: 0;
+  transition: all 0.3s ease-in-out 0s;
+  }
+  .serviceBox:hover .description{
+  color: #fff;
+  }
+  #page-container {
+  position: relative;
+  min-height: 100vh;
+  }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index">GitScan</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Home/Index#about">About</a></li>
+                    <li><a href="/Home/Index#doc">Doc</a></li>
+                    <li><a href="/Home/Index#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </div>
+    <div class="text-center">
+        <img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="GitScan logo">
+    </div>
+    <div class="text-center">
+        <h2>GitScan</h2>
+    </div>
+    <div class="text-center">
+        <h3>Automated and on-request Anti-Malware Scan for your Github repositories</h3>
+    </div>
+
+    <div class="demo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <h3 class="title">On-demand Scan</h3>
+                        <p class="description">
+                            Request for our app to scan specific repositories, either public or private, from your Github account and get a detailed report outlining the results of the anti-malware scan on your files.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-rocket"></i>
+                        </div>
+                        <h3 class="title">Event-based Scan</h3>
+                        <p class="description">
+                            Set up our app to scan your edited files for malware at every pull request, and get automated protection of the repositories of your choice through Github warnings and comments.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="serviceBox">
+                        <div class="service-icon">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+                        <h3 class="title">Detailed Reports</h3>
+                        <p class="description">
+                            Receive reports and review historical data on the malware threats found in your repositories, accompanied by details on which anti-malware tools flagged which files in your repositories.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="text-center">
+        <div id="testarea"></div>
+        <a href="/Home/List" class="btn btn-success" id="btn1" role="button"><b>Install on Github</b></a>
+    </div>
+    <div id="about"></div>
+    <br>
+    <br>
+    <br>
+
+    <div class="container" style="padding-right: 400px;">
+        <h4 style="color:#F25022;"><b>About GitScan</b></h4>
+            <h3>
+                <p style="text-align: justify;">
+                    GitScan is an extension that provides Anti-Malware scanning capabilities for all Github customers. We also allow scanning and detecting files with
+                    checked-in or on-pull request through Github repositories. Our goal is to enrich the Github engineering community with additional tools to help protect
+                    customers’ source code in Github repositories and prevent usage of Github for distribution of malware. GitScan is currently being developed by the PRSS
+                    team at Microsoft.
+                </p>
+            </h3>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <h4 style="color:#7FBA00;"><b>Documentation</b></h4><br><br><br><br>
+        <div class="row-md-6">
+            <div class="container text-center">
+                <a href="GettingStarted"><i class="glyphicon glyphicon-file"></i></a>
+                <a href="UnderstandingReports"><i class="glyphicon glyphicon-file"></i></a>
+                <a href="https://help.github.com/en/articles/github-privacy-statement"><i class="glyphicon glyphicon-file"></i></a>
+            </div>
+        </div>
+        <div class="row-md-6"></div>
+        <span><b>Getting started</b></span>
+        <span style="padding-left: 110px;"><b>Understanding Reports</b></span>
+        <span style="padding-left: 110px;"><b>Privacy Policy</b></span>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <h4 id="contact"><b>Contact us</b></h4><br>
+            <form id="contact-form" method="post" action="contact.php" role="form">
+
+                <div class="messages"></div>
+                <h3>
+                <p style="text-align: justify;">
+                Let us know if you have <a class="email" href="mailto:elizabethlin8168.com">questions!</a></p></h3>
+
+
+
+
+
+
+                                               </form>
+        <br><br>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>$(document).ready(function(){
+    // Add smooth scrolling to all links in navbar + footer link
+    $(".navbar a, footer a[href='#home']").on('click', function(event) {
+      if (this.hash !== "") {
+        event.preventDefault();1
+        var hash = this.hash;
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function(){
+          window.location.hash = hash;
+        });
+      }
+    });
+    $(window).scroll(function() {
+      $(".slideanim").each(function(){
+        var pos = $(this).offset().top;
+        var winTop = $(window).scrollTop();
+          if (pos < winTop + 600) {
+            $(this).addClass("slide");
+          }
+      });
+    });
+  })</script>

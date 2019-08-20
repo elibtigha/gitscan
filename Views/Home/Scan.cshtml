@@ -1,0 +1,124 @@
+﻿
+@model OctokitDemo.Models.ScanViewModel
+
+@{
+    ViewBag.Title = "GitScan";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="azure-storage.blob.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GitScan - Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+          .navbar {
+              margin-bottom: 0;
+              background-color: #22325a;
+              z-index: 9999;
+              border: 0;
+              letter-spacing: 3px;
+              border-radius: 0;
+          }
+
+              .navbar li a {
+                  color: #fff !important;
+                  font-family: MS UI Gothic;
+                  font-size: 24px !important;
+                  padding-right: 50px;
+                  padding-left: 50px;
+                  padding-top: 25px;
+                  padding-bottom: 25px;
+              }
+
+              .navbar .navbar-brand {
+                  color: #fff !important;
+                  font-family: 'Trebuchet MS';
+                  font-size: 45px !important;
+                  padding-right: 50px;
+                  padding-left: 50px;
+                  padding-top: 25px;
+                  padding-bottom: 25px;
+              }
+
+          .navbar-nav li a:hover, .navbar-nav li.active a {
+              color: #22325b !important;
+              background-color: #fff !important;
+              font-family: MS UI Gothic;
+          }
+
+          .navbar-default .navbar-toggle {
+              border-color: transparent;
+              color: #fff !important;
+              font-family: MS UI Gothic;
+          }
+
+          .slideanim {
+              visibility: hidden;
+          }
+
+          .slide {
+              animation-name: slide;
+              -webkit-animation-name: slide;
+              animation-duration: 1s;
+              -webkit-animation-duration: 1s;
+              visibility: visible;
+          }
+
+          body {
+              padding-top: 280px;
+          }
+
+          h3 {
+              font-family: MS UI Gothic;
+              font-size: 24px;
+          }
+
+          .btn-success {
+              padding: 10px 40px;
+              font-size: 34px;
+              border-radius: 10px;
+              font-family: MS UI Gothic;
+              padding-top: 0px;
+          }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index">GitScan</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Home/Index#about">About</a></li>
+                    <li><a href="/Home/Index#doc">Doc</a></li>
+                    <li><a href="/Home/Index#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+        <div class="text-center">
+            <h3>
+                Thank you for scanning your files with GitScan. You should be receiving an email shortly
+                with your scanned reports.
+            </h3>
+        </div><br><br><br>
+
+        <div class="text-center">
+            <a href="/Home/Index" class="btn btn-success" id="about" role="button"><b>Scan more repos</b></a>
+        </div>
+
+</body>
+
+</html>

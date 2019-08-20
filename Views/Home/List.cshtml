@@ -1,0 +1,81 @@
+﻿@model OctokitDemo.Models.ListViewModel
+
+@{
+    ViewBag.Title = "GitScan";
+}
+
+@*@{
+        void Scanbtnclick()
+        {
+            if (Request.Form["repo"] != null)
+            {
+                string chosenrepo = Request.Form["repo"].ToString();
+                using (var client = new WebClient())
+                {
+                    client.Headers.Add("user-agent", "Anything");
+                    client.DownloadFile(chosenrepo, "repo.zip");
+                    //Console.WriteLine("Hello World!");
+                }
+            }
+        }
+    }*@
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<link href="mastersheet.css" rel="stylesheet" />
+<title>GitScan - Scan Repos</title>
+<script src="azure-storage.blob.js"></script>
+<meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=edge">
+
+<div class="container-fluid">
+    <nav style="margin-bottom: 0; background-color: #22325a; z-index: 9999; border: 0; letter-spacing: 3px; border-radius: 0;" class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a style="color: #fff !important; font-family: 'Trebuchet MS'; font-size: 45px !important; padding-right: 50px; padding-left: 50px;padding-top: 25px;padding-bottom: 25px;" class="navbar-brand" href="/Home/Index">GitScan</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a style="color: #fff ;font-family: MS UI Gothic;font-size: 24px !important;padding-right: 50px;padding-left: 50px;padding-top: 25px;padding-bottom: 25px;" href="/Home/Index#about">About</a></li>
+                <li><a style="color: #fff ;font-family: MS UI Gothic;font-size: 24px !important;padding-right: 50px;padding-left: 50px;padding-top: 25px;padding-bottom: 25px;" href="/Home/Index#doc">Doc</a></li>
+                <li><a style="color: #fff ;font-family: MS UI Gothic;font-size: 24px !important;padding-right: 50px;padding-left: 50px;padding-top: 25px;padding-bottom: 25px;" href="/Home/Index#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<br><br><br><br><br>
+<h1 style="font-family: MS UI Gothic; color: #22325b" align="center">Select the repository you wish to scan: </h1>
+<br><br>
+
+<!--form id="myform" method="get" action="/home/Scan?repoId=194916536"-->
+<table name="repotable">
+    @foreach (var repository in Model.Repositories)
+    {
+        <tr>
+            <div style="margin-left: 35.5%; color: #000 ;font-family: MS UI Gothic;font-size: 19px;">
+                <input type="radio" style="width:30px; height:14px;" name="repocho" value=@repository.Id>@repository.Name<br>
+            </div>
+            <br>
+        </tr>
+    }
+</table>
+<br><br>
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js">
+</script>
+
+<form class="text-center">
+    <input type="button" class="btn btn-success" style="font-size: 24px;" value="Scan respoitory" onclick="scann()" ; return false;>
+</form>
+
+<script>
+    function scann() {
+        var rep = $('input[name=repocho]:checked').val();
+        location.href = '@Url.Action("Scan")?repoId=' + rep;
+    }
+</script>
