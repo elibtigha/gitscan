@@ -10,7 +10,8 @@
         public const string ClientId = "Iv1.7df1abe13beab160";
         public const string ClientSecret = "753a606887a2e18d1f051c9cd182c37435ffa6c6";
         public const string GitHubAppWebhookSecret = "elibtighamaxim";
-        public const string GitHubAppPemFilePath = @"C:\Users\t-ellin\Downloads\OctokitDemo-full\OctokitDemo\gitscan.2019-08-20.private-key.pem";
+        public const string GitHubAppPemFilePath = @"C:\GitScanConfigFiles\gitscan.2019-08-20.private-key.pem";
+	    public const string StorageAccountConfigFile = @"C:\GitScanConfigFiles\storageaccount.config";
         public const string AppName = "GitScan";
         public const int  GitHubAppId = 38997;
 
