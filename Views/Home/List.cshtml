@@ -76,6 +76,12 @@
 <script>
     function scann() {
         var rep = $('input[name=repocho]:checked').val();
-        location.href = '@Url.Action("Scan")?repoId=' + rep;
+        if (rep == null) {
+            alert("Please select a repository to scan.");
+            location.href = '@Url.Action("List")';
+        }
+        else {
+            location.href = '@Url.Action("Scan")?repoId=' + rep;
+        }
     }
 </script>
