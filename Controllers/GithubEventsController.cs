@@ -17,7 +17,6 @@ namespace OctokitDemo.Controllers
             {
                 return new FilePrivateKeySource(Constants.GitHubAppPemFilePath);
             });
-
         // GET: GithubEvents
         [HttpPost]
         public ActionResult Default()
