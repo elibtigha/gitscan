@@ -36,7 +36,6 @@ C:\Users\t-ellin\gitscan\bin\System.Web.Razor.xml
 C:\Users\t-ellin\gitscan\bin\System.Web.WebPages.xml
 C:\Users\t-ellin\gitscan\bin\System.Web.WebPages.Deployment.xml
 C:\Users\t-ellin\gitscan\bin\System.Web.WebPages.Razor.xml
-C:\Users\t-ellin\gitscan\obj\Debug\OctokitDemo.csprojAssemblyReference.cache
 C:\Users\t-ellin\gitscan\obj\Debug\OctokitDemo.csproj.CoreCompileInputs.cache
 C:\Users\t-ellin\gitscan\obj\Debug\OctokitDemo.csproj.CopyComplete
 C:\Users\t-ellin\gitscan\obj\Debug\OctokitDemo.dll
@@ -85,3 +84,5 @@ C:\Users\t-ibabou\Desktop\final\gitscan\obj\Debug\OctokitDemo.csproj.CoreCompile
 C:\Users\t-ibabou\Desktop\final\gitscan\obj\Debug\OctokitDemo.csproj.CopyComplete
 C:\Users\t-ibabou\Desktop\final\gitscan\obj\Debug\OctokitDemo.dll
 C:\Users\t-ibabou\Desktop\final\gitscan\obj\Debug\OctokitDemo.pdb
+C:\Users\t-ellin\gitscan\bin\INIFileParser.dll
+C:\Users\t-ellin\gitscan\bin\INIFileParser.xml
