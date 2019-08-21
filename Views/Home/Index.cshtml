@@ -197,7 +197,7 @@
 
     </div>
     <div class="text-center">
-        <img src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="GitScan logo">
+        <img src="@Url.Content("~/git.png")" alt="GitScan logo">
     </div>
     <div class="text-center">
         <h2>GitScan</h2>
@@ -251,7 +251,9 @@
 
     <div class="text-center">
         <div id="testarea"></div>
-        <a href="/Home/List" class="btn btn-success" id="btn1" role="button"><b>Install on Github</b></a>
+        <a href="/Home/List" class="btn btn-success" id="btn1" role="button"><b>Log In</b></a>
+        <br><br>
+        <a href="https://github.com/marketplace" style="background-color: #22325a" class="btn btn-success" id="btn1" role="button"><b>Install on Github</b></a>
     </div>
     <div id="about"></div>
     <br>
@@ -260,14 +262,14 @@
 
     <div class="container" style="padding-right: 400px;">
         <h4 style="color:#F25022;"><b>About GitScan</b></h4>
-            <h3>
-                <p style="text-align: justify;">
-                    GitScan is an extension that provides Anti-Malware scanning capabilities for all Github customers. We also allow scanning and detecting files with
-                    checked-in or on-pull request through Github repositories. Our goal is to enrich the Github engineering community with additional tools to help protect
-                    customers’ source code in Github repositories and prevent usage of Github for distribution of malware. GitScan is currently being developed by the PRSS
-                    team at Microsoft.
-                </p>
-            </h3>
+        <h3>
+            <p style="text-align: justify;">
+                GitScan is an extension that provides Anti-Malware scanning capabilities for all Github customers. We also allow scanning and detecting files with
+                checked-in or on-pull request through Github repositories. Our goal is to enrich the Github engineering community with additional tools to help protect
+                customers’ source code in Github repositories and prevent usage of Github for distribution of malware. GitScan is currently being developed by the PRSS
+                team at Microsoft.
+            </p>
+        </h3>
     </div>
     <br>
     <br>
@@ -292,19 +294,21 @@
 
     <div class="container">
         <h4 id="contact"><b>Contact us</b></h4><br>
-            <form id="contact-form" method="post" action="contact.php" role="form">
+        <form id="contact-form" method="post" action="contact.php" role="form">
 
-                <div class="messages"></div>
-                <h3>
+            <div class="messages"></div>
+            <h3>
                 <p style="text-align: justify;">
-                Let us know if you have <a class="email" href="mailto:elizabethlin8168.com">questions!</a></p></h3>
+                    Let us know if you have <a class="email" href="mailto:elizabethlin8168.com">questions!</a>
+                </p>
+            </h3>
 
 
 
 
 
 
-                                               </form>
+        </form>
         <br><br>
 
     </div>
