@@ -108,7 +108,10 @@ namespace OctokitDemo.Controllers
                 Session["CSRF:State"] = null;
 
                 var token = await GetGitHubClient().Oauth.CreateAccessToken(
-                    new OauthTokenRequest(Constants.ClientId, Constants.ClientSecret, code));
+                    new OauthTokenRequest(
+                        GitScanAppConfig.GetValue(Constants.GlobalSection, Constants.ClientIdKey),
+                        GitScanAppConfig.GetValue(Constants.GlobalSection, Constants.ClientSecretKey),
+                        code));
                 Session["OAuthToken"] = token.AccessToken;
             }
             return RedirectToAction("List");
@@ -119,7 +122,7 @@ namespace OctokitDemo.Controllers
             string csrf = Membership.GeneratePassword(24, 1);
             Session["CSRF:State"] = csrf;
             // 1. Redirect users to request GitHub access
-            var request = new OauthLoginRequest(Constants.ClientId)
+            var request = new OauthLoginRequest(GitScanAppConfig.GetValue(Constants.GlobalSection, Constants.ClientIdKey))
             {
                 Scopes = { "repo" },
                 State = csrf

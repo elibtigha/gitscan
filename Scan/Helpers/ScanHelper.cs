@@ -23,7 +23,7 @@ namespace OctokitDemo.Scan.Helpers
         {
             try
             {
-                string storageConnectionString = ConfigurationManager.AppSettings["StorageConnectionStringReadWrite"];
+                string storageConnectionString = GitScanAppConfig.GetValue(Constants.StorageSection, Constants.ConnectionStringKey);
 
                 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
                 CloudBlobClient serviceClient = storageAccount.CreateCloudBlobClient();
