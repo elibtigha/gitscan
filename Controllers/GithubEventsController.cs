@@ -42,7 +42,7 @@ namespace OctokitDemo.Controllers
             string body = GetRequestPostData(Request);
 
             // Validate message integrity
-            if (!RequestPayloadHelper.ValidateSender(body, messageSignature, Constants.GitHubAppWebhookSecret))
+            if (!RequestPayloadHelper.ValidateSender(body, messageSignature, GitScanAppConfig.GetValue(Constants.GlobalSection, Constants.GitHubAppWebhookSecretKey)))
             {
                 return new HttpStatusCodeResult(400);
             }

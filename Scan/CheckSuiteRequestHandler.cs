@@ -79,7 +79,8 @@ namespace ScanXGitHubApp
             CheckId = Guid.NewGuid();
 
             this.jwtHelper = JwtTokenHelper.CreateGitHubJwtFactory(
-                   keySource, Constants.GitHubAppId);
+                   keySource,
+                   int.Parse(GitScanAppConfig.GetValue(Constants.GlobalSection, Constants.GitHubAppIdKey)));
 
             gitHubInstallationClient = this.CreateGitHubInstallationClientAsync().Result;
         }
@@ -95,7 +96,7 @@ namespace ScanXGitHubApp
             this.appTokenExpirationTime = DateTime.UtcNow.AddSeconds(CheckSuiteRequestHandler.maxAppTokenValidityTimeInSeconds);
             string jwtToken = this.CreateAppToken();
             Credentials credentials = new Credentials(jwtToken, AuthenticationType.Bearer);
-            IGitHubClient client = new GitHubClient(new ProductHeaderValue(Constants.AppName))
+            IGitHubClient client = new GitHubClient(new ProductHeaderValue(GitScanAppConfig.GetValue(Constants.GlobalSection, Constants.AppNameKey)))
             {
                 Credentials = credentials
             };
@@ -108,7 +109,7 @@ namespace ScanXGitHubApp
             this.installationTokenExpirationTime = accessToken.ExpiresAt.UtcDateTime;
 
             // Create a new GitHubClient using the installation token as authentication
-            var installationClient = new GitHubClient(new ProductHeaderValue($"{Constants.AppName}{GithubInstallationId}"))
+            var installationClient = new GitHubClient(new ProductHeaderValue($"{GitScanAppConfig.GetValue(Constants.GlobalSection, Constants.AppNameKey)}{GithubInstallationId}"))
             {
                 Credentials = new Credentials(accessToken.Token)
             };
