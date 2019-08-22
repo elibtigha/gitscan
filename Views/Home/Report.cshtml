@@ -293,10 +293,10 @@ else
     <div class="row">
         <div class="col-md-8 col-sm-6">
             <table class='table table-bordered table-condensed table-striped table-hover'>
-                <tr><th>File name</th><th>Malware Detected</th></tr>
+                <tr><th>File name</th><th>Malware Detected</th><th>AV Engines</th></tr>
                 @foreach (var entry in Model.Result.ConfirmedMalwares)
                 {
-                    <tr class="table-row"> <td>@entry.FileName</td><td>@entry.MalwareInfo</td></tr>
+                    <tr class="table-row"> <td>@entry.FileName</td><td>@entry.MalwareInfo</td><td>@entry.AvEngines</td></tr>
                 }
             </table>
         </div>
